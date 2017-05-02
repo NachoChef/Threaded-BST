@@ -1,0 +1,68 @@
+V "GNAT Lib v2016"
+A -gnatc
+A -mtune=generic
+A -march=pentium4
+P NO ZX
+
+RN
+RV NO_ALLOCATORS
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U genericbst%s		genericbst.ads		b86bf5ac EE OO PK GE
+
+D genericbst.ads	20170502063738 b86bf5ac genericbst%s
+X 1 genericbst.ads
+2+14 Akey 5r39 7r39 9r39 12r40 13r71 14r73 19r56 19r73 21r61 24r61
+3+14 BinarySearchTreeRecord 5r58 7r58 9r58 11r42 13r40 14r42 38r32
+5V24 "<"{boolean} 5>27 5>46
+5*27 TheKey{2+14}
+5*46 ARecord{3+14}
+7V24 ">"{boolean} 7>27 7>46
+7*27 TheKey{2+14}
+7*46 ARecord{3+14}
+9V24 "="{boolean} 9>27 9>46
+9*27 TheKey{2+14}
+9*46 ARecord{3+14}
+11U19 myPutRec 11>29
+11*29 ARecord{3+14}
+12U19 myPutName 12>30
+12*30 Name{2+14}
+13V18 getName{2+14} 13>27
+13*27 ARecord{3+14}
+14V18 getNumber{2+14} 14>29
+14*29 ARecord{3+14}
+15k9*genericBST 2z14 3z14 5z24 7z24 9z24 11z19 12z19 13z18 14z18 32E14 41l5
+. 41e15
+16P14*BinarySearchTreePoint 17r50 18r56 20r50 22r63 23r50 25r63 26r49 27r24
+. 28r46 29r56 30r56 33c14 36r40 40r11
+17A9*nodeStack(16P14)<integer>
+18U19*InsertBinarySearchTree 18=42 19>43 19>62
+18p42 Root{16P14}
+19*43 custName{2+14}
+19*62 custPhone{2+14}
+20U19*FindCustomerIterative 20>41 21>43 22<43
+20p41 Root{16P14}
+21*43 CustomerName{2+14}
+22p43 CustomerPoint{16P14}
+23U19*FindCustomerRecursive 23>41 24>43 25<43
+23p41 Root{16P14}
+24*43 CustomerName{2+14}
+25p43 CustomerPoint{16P14}
+26V18*InOrderSuccessor{16P14} 26>35
+26p35 TreePoint{16P14}
+28U19*PreOrder 28=28
+28p28 TreePoint{16P14}
+29U19*PostOrderIterative 29=38
+29p38 TreePoint{16P14}
+30U19*PostOrderRecursive 30=38
+30p38 TreePoint{16P14}
+32R14 Node 33r46 34c14 39e27 40r40
+36p25 Llink{16P14}
+36p32 Rlink{16P14}
+37b25 Ltag{boolean}
+37b31 Rtag{boolean}
+38*25 Info{3+14}
+40p4 Root{16P14}
+
