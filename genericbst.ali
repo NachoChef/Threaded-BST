@@ -1,68 +1,102 @@
 V "GNAT Lib v2016"
+A -mmacosx-version-min=10.12.5
 A -gnatc
-A -mtune=generic
-A -march=pentium4
+A -mtune=core2
+A -fPIC
 P NO ZX
 
 RN
-RV NO_ALLOCATORS
+RV NO_IO
 RV NO_STANDARD_STORAGE_POOLS
+RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
 
-U genericbst%s		genericbst.ads		b86bf5ac EE OO PK GE
+U genericbst%s		genericbst.ads		e5f038d4 EE OO PK GE
+W ada%s			ada.ads			ada.ali
+Z ada.io_exceptions%s	a-ioexce.ads		a-ioexce.ali
+W ada.sequential_io%s
+Z system%s		system.ads		system.ali
+Z system.sequential_io%s  s-sequio.adb		s-sequio.ali
 
-D genericbst.ads	20170502063738 b86bf5ac genericbst%s
-X 1 genericbst.ads
-2+14 Akey 5r39 7r39 9r39 12r40 13r71 14r73 19r56 19r73 21r61 24r61
-3+14 BinarySearchTreeRecord 5r58 7r58 9r58 11r42 13r40 14r42 38r32
-5V24 "<"{boolean} 5>27 5>46
-5*27 TheKey{2+14}
-5*46 ARecord{3+14}
-7V24 ">"{boolean} 7>27 7>46
-7*27 TheKey{2+14}
-7*46 ARecord{3+14}
-9V24 "="{boolean} 9>27 9>46
-9*27 TheKey{2+14}
-9*46 ARecord{3+14}
-11U19 myPutRec 11>29
-11*29 ARecord{3+14}
-12U19 myPutName 12>30
-12*30 Name{2+14}
-13V18 getName{2+14} 13>27
-13*27 ARecord{3+14}
-14V18 getNumber{2+14} 14>29
-14*29 ARecord{3+14}
-15k9*genericBST 2z14 3z14 5z24 7z24 9z24 11z19 12z19 13z18 14z18 32E14 41l5
-. 41e15
-16P14*BinarySearchTreePoint 17r50 18r56 20r50 22r63 23r50 25r63 26r49 27r24
-. 28r46 29r56 30r56 33c14 36r40 40r11
-17A9*nodeStack(16P14)<integer>
-18U19*InsertBinarySearchTree 18=42 19>43 19>62
-18p42 Root{16P14}
-19*43 custName{2+14}
-19*62 custPhone{2+14}
-20U19*FindCustomerIterative 20>41 21>43 22<43
-20p41 Root{16P14}
-21*43 CustomerName{2+14}
-22p43 CustomerPoint{16P14}
-23U19*FindCustomerRecursive 23>41 24>43 25<43
-23p41 Root{16P14}
-24*43 CustomerName{2+14}
-25p43 CustomerPoint{16P14}
-26V18*InOrderSuccessor{16P14} 26>35
-26p35 TreePoint{16P14}
-28U19*PreOrder 28=28
-28p28 TreePoint{16P14}
-29U19*PostOrderIterative 29=38
-29p38 TreePoint{16P14}
-30U19*PostOrderRecursive 30=38
-30p38 TreePoint{16P14}
-32R14 Node 33r46 34c14 39e27 40r40
-36p25 Llink{16P14}
-36p32 Rlink{16P14}
-37b25 Ltag{boolean}
-37b31 Rtag{boolean}
-38*25 Info{3+14}
-40p4 Root{16P14}
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-ioexce.ads		20160516092927 e4a01f64 ada.io_exceptions%s
+D a-sequio.ads		20160516092928 7b5d9d38 ada.sequential_io%s
+D a-stream.ads		20160516092929 119b8fb3 ada.streams%s
+D genericbst.ads	20170503043109 9eada5ec genericbst%s
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-cstrea.ads		20160516092927 e53d8b8e interfaces.c_streams%s
+D system.ads		20160516092931 c3282aa7 system%s
+D s-crtl.ads		20160516092927 0ebbdb71 system.crtl%s
+D s-ficobl.ads		20160516092933 078245e4 system.file_control_block%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-sequio.ads		20160516092929 fc7560a7 system.sequential_io%s
+X 1 ada.ads
+16K9*Ada 19e8 5|1r6 21r25
+X 3 a-sequio.ads
+43k13*Sequential_IO 158e22 5|1w10 21r29
+X 5 genericbst.ads
+4+14 Akey 7r39 9r39 11r39 14r40 15r71 16r73 17r37 17r50 21r43 24r56 24r73
+. 26r61 29r61 37r64
+5+14 BinarySearchTreeRecord 7r58 9r58 11r58 13r42 15r40 16r42 17r63 38r46
+. 49r32
+7V24 "<"{boolean} 7>27 7>46
+7*27 TheKey{4+14}
+7*46 ARecord{5+14}
+9V24 ">"{boolean} 9>27 9>46
+9*27 TheKey{4+14}
+9*46 ARecord{5+14}
+11V24 "="{boolean} 11>27 11>46
+11*27 TheKey{4+14}
+11*46 ARecord{5+14}
+13U19 myPutRec 13>29
+13*29 ARecord{5+14}
+14U19 myPutName 14>30
+14*30 Name{4+14}
+15V18 getName{4+14} 15>27
+15*27 ARecord{5+14}
+16V18 getNumber{4+14} 16>29
+16*29 ARecord{5+14}
+17V18 makeRecord{5+14} 17>30 17>43
+17*30 P{4+14}
+17*43 Q{4+14}
+18k9*genericBST 4z14 5z14 7z24 9z24 11z24 13z19 14z19 15z18 16z18 17z18 43E14
+. 51l5 51e15
+19P14*BinarySearchTreePoint 20r50 23r56 25r50 27r63 28r50 30r63 31r49 32r24
+. 33r46 33r79 34r56 35r56 37r35 44c14 47r40
+20A9*nodeStack(19P14)<integer>
+21K12*KeyIO[3|43] 22r8
+23U19*InsertBinarySearchTree 23=42 24>43 24>62
+23p42 Root{19P14}
+24*43 custName{4+14}
+24*62 custPhone{4+14}
+25U19*FindCustomerIterative 25>41 26>43 27<43
+25p41 Root{19P14}
+26*43 CustomerName{4+14}
+27p43 CustomerPoint{19P14}
+28U19*FindCustomerRecursive 28>41 29>43 30<43
+28p41 Root{19P14}
+29*43 CustomerName{4+14}
+30p43 CustomerPoint{19P14}
+31V18*InOrderSuccessor{19P14} 31>35
+31p35 TreePoint{19P14}
+33U19*PreOrder 33=28 33>69
+33p28 TreePoint{19P14}
+33p69 Root{19P14}
+34U19*PostOrderIterative 34=38
+34p38 TreePoint{19P14}
+35U19*PostOrderRecursive 35=38
+35p38 TreePoint{19P14}
+36U14*makeTree 36>23
+36a23 file{string}
+37U14*AllocateNode 37<27 37>58
+37p27 Q{19P14}
+37*58 key{4+14}
+38A9*stack(5+14)<integer>
+43R14 Node 44r46 45c14 50e27
+47p25 Llink{19P14}
+47p32 Rlink{19P14}
+48b25 Ltag{boolean}
+48b31 Rtag{boolean}
+49*25 Info{5+14}
 

@@ -1,19 +1,47 @@
 package body genericBST is
    procedure InsertBinarySearchTree(Root:  in out BinarySearchTreePoint;
 				          custName: in AKey; custPhone: AKey) is
+      P : BinarySearchTreePoint;
+      T : BinarySearchTreePoint := new Node'(Info => makeRecord(custName, custPhone)); 
    begin
-      null;
+      if Root = null then
+         Root := T;
+      else
+         P := Root;
+         loop
+            if custName < P.Info then --ins left
+               if P.LLink /= null then
+                  P := P.LLink;
+               else
+                  T.LLink := P.LLink; T.LTag := P.LTag;
+                  P.LLink := T; P.LTag := true; 
+                  T.RLink := P; T.RTag := false;
+                  exit;
+               end if;
+            elsif custName > P.Info then --ins right
+               if P.RLink /= null then
+                  P := P.RLink;
+               else 
+                  T.RLink := P.RLink; T.RTag := P.RTag;
+                  P.RLink := T; P.RTag := true; 
+                  T.LLink := P; T.LTag := false;
+                  exit;
+               end if;
+            else
+               exit;
+            end if;
+         end loop;
+      end if;
    end InsertBinarySearchTree;
                       
 	procedure FindCustomerIterative(Root: in BinarySearchTreePoint; 
 				          CustomerName:  in AKey;
 				          CustomerPoint:  out BinarySearchTreePoint) is
       T : BinarySearchTreePoint := Root.LLink;
-      found : Boolean := False;
    begin
       loop
-         if CustomerName /= getName(T) then
-            if CustomerName > getName(T) then
+         if CustomerName /= T.Info then
+            if CustomerName > T.Info then
                if T.RTag then
                   T := T.Rlink;
                else
@@ -43,11 +71,11 @@ package body genericBST is
       else
          T := Root;
       end if;
-      if CustomerName < getName(T) then
+      if CustomerName < T.Info then
          if T.LTag then
             FindCustomerRecursive(T.LLink, CustomerName, CustomerPoint);
          end if;
-      elsif CustomerName > getName(T) then
+      elsif CustomerName > T.Info then
          if T.RTag then
             FindCustomerRecursive(T.RLink, Customername, CustomerPoint);
          end if;
@@ -70,18 +98,18 @@ package body genericBST is
       return T;
    end InOrderSuccessor;
    
-	procedure PreOrder(TreePoint: in out BinarySearchTreePoint) is
+	procedure PreOrder(TreePoint: in out BinarySearchTreePoint; Root : in BinarySearchTreePoint) is
       T : BinarySearchTreePoint := TreePoint;
       Q : BinarySearchTreePoint;
    begin
       if TreePoint = Root then
          T := TreePoint.LLink;
       else
-         put(getName(TreePoint)); New_Line;
+         myPutRec(TreePoint.Info);
       end if;
       Q := T;
       loop
-         myPutRec(Q); New_Line;
+         myPutRec(Q.Info);
          if Q.LTag then
             Q := Q.LLink;
          else
@@ -123,19 +151,15 @@ package body genericBST is
 			else 
 				exit when P = TreePoint;
 			end if;
-		end loop;
-		     put(" | ");   
+		end loop; 
 		while not empty loop
 			pop(P);
-			Phone := CustomerPhone(P);
-			for i in 1..10 loop
-				Put(Phone(i));
-			end loop;Put("/ ");
-			NamesIO.Put(CustomerName(P));New_Line;
+			myPutRec(P.Info);
 		end loop;
    end PostOrderIterative;
    
 	procedure PostOrderRecursive(TreePoint: in out BinarySearchTreePoint) is
+      Phone : AKey;
    begin
       if TreePoint /= R then
 			if TreePoint.LTag then
@@ -144,27 +168,24 @@ package body genericBST is
 			if TreePoint.RTag then
 				PostOrderRecursive(TreePoint.RLink);
 			end if;
-			Phone := CustomerPhone(TreePoint);
-			for i in 1..10 loop
-				Put(Phone(i));
-			end loop;
-         Put("/ ");
-			NamesIO.Put(getName(TreePoint));New_Line;
+			myPutRec(TreePoint.Info);
       else
 			PostOrderRecursive(TreePoint.LLink);
 		end if;
    end PostOrderRecursive;
    
+   
+----------------------------------------------------------------------
    procedure makeTree(file : String) is
       Input_Exception : Exception;
-      file : KeyIO.File_Type;
+      input : KeyIO.File_Type;
       Root : BinarySearchTreePoint;
       op, T1, T2 : AKey;
    begin
       Open(input, in_file, "input.txt");
       begin
          Get(input, op);
-         case(AKey'Value(op)) is
+         case(op) is
             when 1 =>
                Get(input, T1); Get(input, T2);
                InsertBinarySearchTree(Root, T1, T2);
@@ -177,12 +198,22 @@ package body genericBST is
             when 4 =>
                put_line("NULL");
             when 5 =>
+               null;
             when 6 =>
+               null;
             when 7 =>
+               null;
             when 8 =>
+               null;
             when 9 =>
+               null;
             when 10 =>
+               null;
             when others =>
                raise Input_Exception;
+         end case;
+         Close(input);
+      end;
+   end makeTree;
    
 end genericBST;

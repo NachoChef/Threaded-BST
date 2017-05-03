@@ -1,3 +1,5 @@
+with Ada.Sequential_IO;
+
 generic
 	type Akey is private;
 	type BinarySearchTreeRecord is private;
@@ -12,10 +14,11 @@ generic
    with procedure myPutName (Name : in AKey);
    with function getName (ARecord : in BinarySearchTreeRecord) return AKey;
    with function getNumber (ARecord : in BinarySearchTreeRecord) return AKey;
+   with function makeRecord (P : in Akey; Q : in AKey) return BinarySearchTreeRecord;
 package genericBST is
 	type BinarySearchTreePoint is limited private;
    type nodeStack is array(Positive range <>) of BinarySearchTreePoint;
-   type KeyIO is new Sequential_IO(AKey);
+   package KeyIO is new Ada.Sequential_IO(AKey);
    use KeyIO;
 	procedure InsertBinarySearchTree(Root:  in out BinarySearchTreePoint;
 				          custName: in AKey; custPhone: AKey );
@@ -27,17 +30,21 @@ package genericBST is
 				          CustomerPoint:  out BinarySearchTreePoint);
 	function InOrderSuccessor(TreePoint: in BinarySearchTreePoint) 
 		return BinarySearchTreePoint;
-	procedure PreOrder(TreePoint: in out BinarySearchTreePoint);
+	procedure PreOrder(TreePoint: in out BinarySearchTreePoint; Root : in BinarySearchTreePoint);
 	procedure PostOrderIterative(TreePoint: in out BinarySearchTreePoint);
 	procedure PostOrderRecursive(TreePoint: in out BinarySearchTreePoint);
    procedure makeTree(file : String);
+   type stack is array(Positive range <>) of BinarySearchTreeRecord;
+   --procedure push(key : in BinarySearchTreePoint);
+   --procedure pop(key : out BinarySearchTreePoint);
+   
 private
 	type Node;
 	type BinarySearchTreePoint is access Node;
 	type Node is 
 		record
-			Llink, Rlink : BinarySearchTreePoint;
-			Ltag, Rtag : Boolean;  -- True indicates pointer to lower level, False a thread.
+			Llink, Rlink : BinarySearchTreePoint := null;
+			Ltag, Rtag : Boolean := false;  -- True indicates pointer to lower level, False a thread.
 			Info : BinarySearchTreeRecord;
 		end record;
 end genericBST;

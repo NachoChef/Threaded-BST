@@ -1,73 +1,82 @@
 V "GNAT Lib v2016"
 M P W=b
+A -mmacosx-version-min=10.12.5
 A -gnatc
-A -mtune=generic
-A -march=pentium4
+A -mtune=core2
+A -fPIC
 P NO ZX
 
 RN
 RV NO_IO
 RV NO_STANDARD_STORAGE_POOLS
-RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
 
-U main%b		main.adb		937263cb OO SU IL
+U main%b		main.adb		bf099fce OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+Z ada.io_exceptions%s	a-ioexce.ads		a-ioexce.ali
+Z ada.sequential_io%s
 W ada.text_io%s		a-textio.adb		a-textio.ali
 W genericbst%s		genericbst.adb		genericbst.ali
+Z system%s		system.ads		system.ali
+Z system.sequential_io%s  s-sequio.adb		s-sequio.ali
 
 D ada.ads		20160516092928 3ffc8e18 ada%s
 D a-inteio.ads		20160516092932 f64b89a4 ada.integer_text_io%s
-D a-ioexce.ads		20160516092926 e4a01f64 ada.io_exceptions%s
-D a-stream.ads		20160516092928 119b8fb3 ada.streams%s
+D a-ioexce.ads		20160516092927 e4a01f64 ada.io_exceptions%s
+D a-sequio.ads		20160516092928 7b5d9d38 ada.sequential_io%s
+D a-stream.ads		20160516092929 119b8fb3 ada.streams%s
 D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
 D a-tiinio.ads		20160516092928 aa04e5d6 ada.text_io.integer_io%s
-D genericbst.ads	20170502063136 2faf8c9c genericbst%s
+D genericbst.ads	20170503040207 50dcd3ec genericbst%s
 D interfac.ads		20160516092928 5ab55268 interfaces%s
-D i-cstrea.ads		20160516092926 e53d8b8e interfaces.c_streams%s
-D main.adb		20170502063138 72fb9327 main%b
-D system.ads		20160516092930 2da59038 system%s
-D s-crtl.ads		20160516092926 0ebbdb71 system.crtl%s
-D s-ficobl.ads		20160516092932 078245e4 system.file_control_block%s
+D i-cstrea.ads		20160516092927 e53d8b8e interfaces.c_streams%s
+D main.adb		20170503040344 21f33052 main%b
+D system.ads		20160516092931 c3282aa7 system%s
+D s-crtl.ads		20160516092927 0ebbdb71 system.crtl%s
+D s-ficobl.ads		20160516092933 078245e4 system.file_control_block%s
 D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
-D s-wchcon.ads		20160516092930 1b7d22d2 system.wch_con%s
+D s-sequio.ads		20160516092929 fc7560a7 system.sequential_io%s
+D s-wchcon.ads		20160516092931 1b7d22d2 system.wch_con%s
 X 1 ada.ads
-16K9*Ada 19e8 10|1r6 1r19 1r44 1r57
+16K9*Ada 19e8 11|1r6 1r19 1r44 1r57
 X 2 a-inteio.ads
-18K13*Integer_Text_IO[6|46] 10|1w23 1r61
-X 5 a-textio.ads
-49K13*Text_IO 471e16 10|1w10 1r48
-52P9*File_Type 10|47r12
-242U14*Put 10|28s7 28s26 28s39 33s7
-263U14*Put_Line 10|49s4 50s4 51s4 52s4 53s4
-X 7 genericbst.ads
-15k9*genericBST 40e15 10|2w6 46r25
-X 10 main.adb
-4U11*main 4b11 54l5 54t9
+18K13*Integer_Text_IO[7|46] 11|1w23 1r61
+X 6 a-textio.ads
+49K13*Text_IO 471e16 11|1w10 1r48
+242U14*Put 11|28s7 28s26 28s39 33s7
+263U14*Put_Line 11|58s5
+X 8 genericbst.ads
+18k9*genericBST 46e15 11|2w6 52r25
+X 11 main.adb
+4U11*main 4b11 61l5 61t9
 5A12 String10{string}<integer> 7r14 8r20 11r29 16r29 21r29 31r35 36r52 41r54
-. 46r36
-6R14 Customer 9e14 11r52 16r52 21r52 26r37 36r35 41r37 46r46
+. 46r32 46r49 52r36
+6R14 Customer 9e14 11r52 16r52 21r52 26r37 36r35 41r37 46r66 47r13 52r46
 7a7 Name{5A12} 13r32 18r32 23r32 28r19 38r22
 8a7 PhoneNumber{5A12} 28r51 43r22
-11V14 "<"{boolean} 11b14 11>17 11>40 14l9 14t11 46r56
+11V14 "<"{boolean} 11b14 11>17 11>40 14l9 14t11 52r56
 11a17 TheKey{5A12} 13r15
 11r40 ARecord{6R14} 13r24
-16V14 ">"{boolean} 16b14 16>17 16>40 19l9 19t11 46r61
+16V14 ">"{boolean} 16b14 16>17 16>40 19l9 19t11 52r61
 16a17 TheKey{5A12} 18r15
 16r40 ARecord{6R14} 18r24
-21V14 "="{boolean} 21b14 21>17 21>40 24l9 24t11 46r66
+21V14 "="{boolean} 21b14 21>17 21>40 24l9 24t11 52r66
 21a17 TheKey{5A12} 23r15
 21r40 ARecord{6R14} 23r24
-26U14 myPutRec 26b14 26>24 29l8 29t16 46r70
+26U14 myPutRec 26b14 26>24 29l8 29t16 52r70
 26r24 ARecord{6R14} 28r11 28r43
-31U14 myPutName 31b14 31>25 34l8 34t17 46r80
+31U14 myPutName 31b14 31>25 34l8 34t17 52r80
 31a25 Name{5A12} 33r11
-36V13 getName{5A12} 36b13 36>22 39l8 39t15 46r91
+36V13 getName{5A12} 36b13 36>22 39l8 39t15 52r91
 36r22 ARecord{6R14} 38r14
-41V13 getNumber{5A12} 41b13 41>24 44l8 44t17 46r100
+41V13 getNumber{5A12} 41b13 41>24 44l8 44t17 52r100
 41r24 ARecord{6R14} 43r14
-46K12 myBST[7|15]
-47p4 input{5|52P9}
+46V13 makeRecord{6R14} 46b13 46>25 46>42 50l8 50t18 52r111
+46a25 P{5A12} 47r26
+46a42 Q{5A12} 47r29
+47r7 rec{6R14} 49r14
+52K12 myBST[8|18]
 
