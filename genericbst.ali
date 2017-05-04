@@ -1,102 +1,191 @@
 V "GNAT Lib v2016"
-A -mmacosx-version-min=10.12.5
-A -gnatc
-A -mtune=core2
-A -fPIC
-P NO ZX
+A -g
+P ZX
 
 RN
+RV NO_ALLOCATORS
+RV NO_EXCEPTIONS
 RV NO_IO
+RV NO_LOCAL_ALLOCATORS
+RV NO_RECURSION
 RV NO_STANDARD_STORAGE_POOLS
-RV NO_IMPLEMENTATION_PRAGMAS
-RV NO_ELABORATION_CODE
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
 RV SPARK_05
 
-U genericbst%s		genericbst.ads		e5f038d4 EE OO PK GE
+U genericbst%b		genericbst.adb		52de0dc0 NE OO PK GE
+W ada%s			ada.ads			ada.ali
+W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+
+U genericbst%s		genericbst.ads		442b67bf BN EE NE OO PK GE
 W ada%s			ada.ads			ada.ali
 Z ada.io_exceptions%s	a-ioexce.ads		a-ioexce.ali
 W ada.sequential_io%s
+W ada.text_io%s		a-textio.adb		a-textio.ali
+Z ada.unchecked_conversion%s
+Z interfaces%s		interfac.ads		interfac.ali
+Z interfaces.c_streams%s  i-cstrea.adb		i-cstrea.ali
 Z system%s		system.ads		system.ali
+Z system.byte_swapping%s  s-bytswa.ads		s-bytswa.ali
+Z system.crtl%s		s-crtl.ads		s-crtl.ali
+Z system.file_control_block%s  s-ficobl.ads	s-ficobl.ali
+Z system.file_io%s	s-fileio.adb		s-fileio.ali
 Z system.sequential_io%s  s-sequio.adb		s-sequio.ali
+Z system.storage_elements%s  s-stoele.adb	s-stoele.ali
 
 D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-inteio.ads		20160516092932 f64b89a4 ada.integer_text_io%s
 D a-ioexce.ads		20160516092927 e4a01f64 ada.io_exceptions%s
 D a-sequio.ads		20160516092928 7b5d9d38 ada.sequential_io%s
+D a-sequio.adb		20160516092932 ed424daa ada.sequential_io%b
 D a-stream.ads		20160516092929 119b8fb3 ada.streams%s
-D genericbst.ads	20170503043109 9eada5ec genericbst%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
+D a-tiinio.ads		20160516092928 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20160516092931 f9eb8f06 ada.unchecked_conversion%s
+D genericbst.ads	20170504022603 071b0f53 genericbst%s
+D genericbst.adb	20170504043614 9be37ee3 genericbst%b
 D interfac.ads		20160516092928 5ab55268 interfaces%s
 D i-cstrea.ads		20160516092927 e53d8b8e interfaces.c_streams%s
 D system.ads		20160516092931 c3282aa7 system%s
+D s-bytswa.ads		20160516092930 799c7440 system.byte_swapping%s
 D s-crtl.ads		20160516092927 0ebbdb71 system.crtl%s
+D s-exctab.ads		20160516092931 54135002 system.exception_table%s
 D s-ficobl.ads		20160516092933 078245e4 system.file_control_block%s
+D s-fileio.ads		20160516092928 45ce2f0f system.file_io%s
 D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
 D s-sequio.ads		20160516092929 fc7560a7 system.sequential_io%s
+D s-soflin.ads		20160516092929 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stalib.ads		20160516092931 09bd3940 system.standard_library%s
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20160516092931 1b7d22d2 system.wch_con%s
 X 1 ada.ads
-16K9*Ada 19e8 5|1r6 21r25
-X 3 a-sequio.ads
-43k13*Sequential_IO 158e22 5|1w10 21r29
-X 5 genericbst.ads
-4+14 Akey 7r39 9r39 11r39 14r40 15r71 16r73 17r37 17r50 21r43 24r56 24r73
-. 26r61 29r61 37r64
-5+14 BinarySearchTreeRecord 7r58 9r58 11r58 13r42 15r40 16r42 17r63 38r46
-. 49r32
-7V24 "<"{boolean} 7>27 7>46
-7*27 TheKey{4+14}
-7*46 ARecord{5+14}
-9V24 ">"{boolean} 9>27 9>46
-9*27 TheKey{4+14}
-9*46 ARecord{5+14}
-11V24 "="{boolean} 11>27 11>46
-11*27 TheKey{4+14}
-11*46 ARecord{5+14}
-13U19 myPutRec 13>29
-13*29 ARecord{5+14}
-14U19 myPutName 14>30
-14*30 Name{4+14}
-15V18 getName{4+14} 15>27
-15*27 ARecord{5+14}
-16V18 getNumber{4+14} 16>29
-16*29 ARecord{5+14}
-17V18 makeRecord{5+14} 17>30 17>43
-17*30 P{4+14}
-17*43 Q{4+14}
-18k9*genericBST 4z14 5z14 7z24 9z24 11z24 13z19 14z19 15z18 16z18 17z18 43E14
-. 51l5 51e15
-19P14*BinarySearchTreePoint 20r50 23r56 25r50 27r63 28r50 30r63 31r49 32r24
-. 33r46 33r79 34r56 35r56 37r35 44c14 47r40
+16K9*Ada 19e8 12|1r6 1r25 21r25 13|1r6 1r19 1r44 1r57
+X 3 a-inteio.ads
+18K13*Integer_Text_IO[10|46] 13|1w23 1r61
+X 5 a-sequio.ads
+43k13*Sequential_IO 158e22 12|1w10 21r29
+53P9 File_Type<23|63P9> 13|219r21[12|21]
+55E9 File_Mode
+55n23 In_File{55E9[12|21]} 13|224r19[12|21]
+76U14 Open 13|224s7[12|21]
+82U14 Close 13|272s10[12|21]
+97U14 Read 13|227s13[12|21] 231s19[12|21] 231s36[12|21] 234s19[12|21] 238s19[12|21]
+. 242s19[12|21]
+100V13 End_Of_File{boolean} 13|226s20[12|21]
+X 9 a-textio.ads
+49K13*Text_IO 471e16 12|1w29 13|1w10 1r48
+166U14*New_Line 13|228s30 235s68 239s69
+242U14*Put 13|80s10 94s14 235s19 239s19
+263U14*Put_Line 13|8s7 10s10 45s10 50s10 78s10 102s10 244s19
+X 10 a-tiinio.ads
+66U14*Put 13|228s13[3|18]
+X 12 genericbst.ads
+4+14 Akey 6r39 8r39 10r39 13r40 14r71 15r73 16r37 16r50 17r33 21r43 24r56
+. 24r73 26r61 29r61 37r68 37r86 38r104 38r122 13|4r56 4r73 42r104 42r122
+. 58r61 86r61 209r67 209r85 221r20
+5+14 BinarySearchTreeRecord 6r58 8r58 10r58 12r42 14r40 15r42 16r63 46r32
+6V24 "<"{boolean} 6>27 6>46 13|17s25 44s15 65s29
+6*27 TheKey{4+14}
+6*46 ARecord{5+14}
+8V24 ">"{boolean} 8>27 8>46 13|26s28 67s32 95s29
+8*27 TheKey{4+14}
+8*46 ARecord{5+14}
+10V24 "="{boolean} 10>27 10>46 13|92s26
+10*27 TheKey{4+14}
+10*46 ARecord{5+14}
+12U19 myPutRec 12>29 13|13s10 23s19 32s19 81s10 94s35 138s10 142s10
+12*29 ARecord{5+14}
+13U19 myPutName 13>30 13|235s53 239s54
+13*30 Name{4+14}
+14V18 getName{4+14} 14>27
+14*27 ARecord{5+14}
+15V18 getNumber{4+14} 15>29
+15*29 ARecord{5+14}
+16V18 makeRecord{5+14} 16>30 16>43 13|212s17
+16*30 P{4+14}
+16*43 Q{4+14}
+17V18 getVal{integer} 17>26 13|228s17 229s18
+17*26 P{4+14}
+18k9*genericBST 4z14 5z14 6z24 8z24 10z24 12z19 13z19 14z18 15z18 16z18 17z18
+. 40E14 48l5 48e15 13|2b14 276l5 276t15
+19P14*BinarySearchTreePoint 20r50 23r56 25r50 27r63 28r50 30r63 31r49 31r82
+. 32r24 33r46 33r79 37r36 38r37 38r71 41c14 44r40 13|3r51 5r11 6r11 42r37
+. 42r71 57r50 59r63 60r11 85r50 87r63 88r11 106r49 106r82 107r24 108r14 131r46
+. 131r79 132r11 133r11 209r35 220r14 222r29
 20A9*nodeStack(19P14)<integer>
-21K12*KeyIO[3|43] 22r8
-23U19*InsertBinarySearchTree 23=42 24>43 24>62
-23p42 Root{19P14}
-24*43 custName{4+14}
-24*62 custPhone{4+14}
-25U19*FindCustomerIterative 25>41 26>43 27<43
-25p41 Root{19P14}
-26*43 CustomerName{4+14}
-27p43 CustomerPoint{19P14}
-28U19*FindCustomerRecursive 28>41 29>43 30<43
-28p41 Root{19P14}
-29*43 CustomerName{4+14}
-30p43 CustomerPoint{19P14}
-31V18*InOrderSuccessor{19P14} 31>35
-31p35 TreePoint{19P14}
-33U19*PreOrder 33=28 33>69
-33p28 TreePoint{19P14}
-33p69 Root{19P14}
-34U19*PostOrderIterative 34=38
-34p38 TreePoint{19P14}
-35U19*PostOrderRecursive 35=38
-35p38 TreePoint{19P14}
-36U14*makeTree 36>23
-36a23 file{string}
-37U14*AllocateNode 37<27 37>58
-37p27 Q{19P14}
-37*58 key{4+14}
-38A9*stack(5+14)<integer>
-43R14 Node 44r46 45c14 50e27
-47p25 Llink{19P14}
-47p32 Rlink{19P14}
-48b25 Ltag{boolean}
-48b31 Rtag{boolean}
-49*25 Info{5+14}
+21K12*KeyIO[5|43] 22r8 13|219r15
+23U19*InsertBinarySearchTree 23=42 24>43 24>62 13|3b14 40l8 40t30 232s19
+23p42 Root{19P14} 13|3b37 9r10 12m10 13r19 15r15
+24*43 custName{4+14} 13|4b43 11r26 17r16 21r35 22r36 26r19 30r35 31r36
+24*62 custPhone{4+14} 13|4b62 11r36 21r45 22r46 30r45 31r46
+25U19*FindCustomerIterative 25>41 26>43 27<43 13|57b19 83l8 83t29 236s19
+25p41 Root{19P14} 13|57b41 62r12
+26*43 CustomerName{4+14} 13|58b43 65r16 67r19
+27p43 CustomerPoint{19P14} 13|59b43 76m7
+28U19*FindCustomerRecursive 28>41 29>43 30<43 13|85b19 96s14 98s14 104l8
+. 104t29 240s19 243s19
+28p41 Root{19P14} 13|85b41 90r12
+29*43 CustomerName{4+14} 13|86b43 92r13 95r16 96r45 98r45
+30p43 CustomerPoint{19P14} 13|87b43 93m14 94r44 96m59 98m59 101m10
+31V18*InOrderSuccessor{19P14} 31>35 31>72 13|106b18 129l8 129t24
+31p35 TreePoint{19P14} 13|106b35 110r12
+31p72 Root{19P14} 13|106b72 113r15
+33U19*PreOrder 33=28 33>69 13|131b19 157l8 157t16
+33p28 TreePoint{19P14} 13|131b28 132r36 135r10 136r15 138r19
+33p69 Root{19P14} 13|131b69 135r22 152r17
+36U14*makeTree 36>23 13|217b14 274l8 274t16
+36a23 file{string} 13|217b23
+37U14*allocateNode 37<28 37>59 37>74 13|11s10 21s19 30s19 209b14 214t7
+37p28 Q{19P14} 13|209b27 211m7 212r7 213r7 213r23
+37*59 name{4+14} 13|209b58 212r28
+37*74 number{4+14} 13|209b73 212r34
+38U14*insertNode 38=26 38=60 38>94 38>110 13|22s19 31s19 42b14 55l8 55t18
+38p26 P{19P14} 13|42b26 44r17 46r20 46r39 47r10 47r24 48r38 51r20 51r39 52r10
+. 52r24 53r38
+38p60 Q{19P14} 13|42b60 46r10 46r28 47r21 48r10 48r27 51r10 51r28 52r21 53r10
+. 53r27
+38*94 name{4+14} 13|42b94 44r10
+38*110 number{4+14} 13|42b110
+40R14 Node 41r46 42c14 47e27 13|211r16
+44p25 Llink{19P14} 13|18r21 19r26 46m30 46r41 47m12 53m29 66r23 98r38 115r20
+. 123r23 136r25 144r20 153r20
+44p32 Rlink{19P14} 13|27r21 28r26 48m29 51m30 51r41 52m12 68r23 96r38 111r14
+. 147r22 147r23 147r29 149r23
+45b25 Ltag{boolean} 13|46m12 46r22 47m26 53m12 114r18 119r15 122r21 143r15
+. 213m25
+45b31 Rtag{boolean} 13|48m12 51m12 51r22 52m26 146r22 213m9
+46*25 Info{5+14} 13|13r24 17r29 23r30 26r32 32r30 44r19 65r33 67r36 81r21
+. 92r30 94r58 95r33 138r29 142r21 212m9
+X 13 genericbst.adb
+5p7 P{12|19P14} 15m10 17r27 18r19 19m19 19r24 22m30 22r30 26r30 27r19 28m19
+. 28r24 31m30 31r30
+6p7 T{12|19P14} 11m23 11r23 12r18 21m32 21r32 22m33 22r33 23r28 30m32 30r32
+. 31m33 31r33 32r28
+60p7 T{12|19P14} 62m7 64r13 65r31 66m16 66r21 67r34 68m16 68r21 76r24 77r10
+. 81r19
+88p7 T{12|19P14} 90m7 91r10 92r28 93r31 95r31 96r36 98r36 101r27
+108p7 Q{12|19P14} 111m7 112r10 113m10 114r16 115m13 115r18 117r15 119r13
+. 120r18 122r19 123m16 123r21 125r18
+108p10 P{12|19P14} 110m7 111r12 117m10 120m13 125m13 128r14
+132p7 T{12|19P14} 136m10 140r12 155r24
+133p7 Q{12|19P14} 140m7 142r19 143r13 144m13 144r18 146r20 147m16 147r21
+. 149m16 149r21 152r13 153m13 153r18 155r20
+218X7 Input_Exception 269r25
+219p7 input{5|53P9[12|21]} 224m12 224r12 226r32 227r18 231r24 231r41 234r24
+. 238r24 242r24 272m16 272r16
+220p7 Root{12|19P14} 232m42 232r42 236r41 240r41 243r41
+221*7 op{12|4+14} 227m25 228r24 229r25
+221*11 T1{12|4+14} 231m31 232r48 234m31 235r63 236r47 238m31 239r64 240r47
+. 242m31 243r47
+221*15 T2{12|4+14} 231m48 232r52
+222p7 tempNode{12|19P14} 236m51 236r51 240m51 240r51 243m51 243r51
+222p17 tempNode2{12|19P14}
+X 23 s-sequio.ads
+63P9*File_Type(43R9)
 

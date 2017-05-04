@@ -1,82 +1,123 @@
 V "GNAT Lib v2016"
 M P W=b
-A -mmacosx-version-min=10.12.5
-A -gnatc
-A -mtune=core2
-A -fPIC
-P NO ZX
+A -g
+P ZX
 
 RN
+RV NO_ALLOCATORS
+RV NO_EXCEPTIONS
 RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_LOCAL_ALLOCATORS
+RV NO_RECURSION
+RV NO_STANDARD_ALLOCATORS_AFTER_ELABORATION
 RV NO_STANDARD_STORAGE_POOLS
+RV NO_UNCHECKED_ACCESS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_ATTRIBUTES
 RV NO_IMPLEMENTATION_PRAGMAS
-RV NO_ELABORATION_CODE
+RV NO_IMPLICIT_LOOPS
 RV SPARK_05
 
-U main%b		main.adb		bf099fce OO SU IL
+U main%b		main.adb		e3ad6ff6 NE OO SU IL
 W ada%s			ada.ads			ada.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
 Z ada.io_exceptions%s	a-ioexce.ads		a-ioexce.ali
 Z ada.sequential_io%s
+W ada.tags%s		a-tags.adb		a-tags.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
+Z ada.unchecked_conversion%s
 W genericbst%s		genericbst.adb		genericbst.ali
-Z system%s		system.ads		system.ali
+Z interfaces%s		interfac.ads		interfac.ali
+Z interfaces.c_streams%s  i-cstrea.adb		i-cstrea.ali
+W system%s		system.ads		system.ali
+Z system.byte_swapping%s  s-bytswa.ads		s-bytswa.ali
+W system.compare_array_unsigned_8%s  s-carun8.adb  s-carun8.ali
+Z system.crtl%s		s-crtl.ads		s-crtl.ali
+W system.exception_table%s  s-exctab.adb	s-exctab.ali
+Z system.file_control_block%s  s-ficobl.ads	s-ficobl.ali
+Z system.file_io%s	s-fileio.adb		s-fileio.ali
 Z system.sequential_io%s  s-sequio.adb		s-sequio.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+Z system.storage_elements%s  s-stoele.adb	s-stoele.ali
+W system.unsigned_types%s  s-unstyp.ads		s-unstyp.ali
+W system.val_int%s	s-valint.adb		s-valint.ali
 
 D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
 D a-inteio.ads		20160516092932 f64b89a4 ada.integer_text_io%s
 D a-ioexce.ads		20160516092927 e4a01f64 ada.io_exceptions%s
 D a-sequio.ads		20160516092928 7b5d9d38 ada.sequential_io%s
+D a-sequio.adb		20160516092932 ed424daa ada.sequential_io%b
 D a-stream.ads		20160516092929 119b8fb3 ada.streams%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
 D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
 D a-tiinio.ads		20160516092928 aa04e5d6 ada.text_io.integer_io%s
-D genericbst.ads	20170503040207 50dcd3ec genericbst%s
+D a-unccon.ads		20160516092931 f9eb8f06 ada.unchecked_conversion%s
+D genericbst.ads	20170504022603 071b0f53 genericbst%s
+D genericbst.adb	20170504043614 9be37ee3 genericbst%b
 D interfac.ads		20160516092928 5ab55268 interfaces%s
 D i-cstrea.ads		20160516092927 e53d8b8e interfaces.c_streams%s
-D main.adb		20170503040344 21f33052 main%b
+D main.adb		20170504025441 2a901cd5 main%b
 D system.ads		20160516092931 c3282aa7 system%s
+D s-bytswa.ads		20160516092930 799c7440 system.byte_swapping%s
+D s-carun8.ads		20160516092931 a903718d system.compare_array_unsigned_8%s
 D s-crtl.ads		20160516092927 0ebbdb71 system.crtl%s
+D s-exctab.ads		20160516092931 54135002 system.exception_table%s
 D s-ficobl.ads		20160516092933 078245e4 system.file_control_block%s
+D s-fileio.ads		20160516092928 45ce2f0f system.file_io%s
 D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
 D s-sequio.ads		20160516092929 fc7560a7 system.sequential_io%s
+D s-soflin.ads		20160516092929 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stalib.ads		20160516092931 09bd3940 system.standard_library%s
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+D s-valint.ads		20160516092930 48a52a3f system.val_int%s
 D s-wchcon.ads		20160516092931 1b7d22d2 system.wch_con%s
 X 1 ada.ads
-16K9*Ada 19e8 11|1r6 1r19 1r44 1r57
-X 2 a-inteio.ads
-18K13*Integer_Text_IO[7|46] 11|1w23 1r61
-X 6 a-textio.ads
-49K13*Text_IO 471e16 11|1w10 1r48
-242U14*Put 11|28s7 28s26 28s39 33s7
-263U14*Put_Line 11|58s5
-X 8 genericbst.ads
-18k9*genericBST 46e15 11|2w6 52r25
-X 11 main.adb
-4U11*main 4b11 61l5 61t9
+16K9*Ada 19e8 16|1r6 1r19 1r44 1r57
+X 3 a-inteio.ads
+18K13*Integer_Text_IO[10|46] 16|1w23 1r61
+X 9 a-textio.ads
+49K13*Text_IO 471e16 16|1w10 1r48
+166U14*New_Line 16|28s65
+242U14*Put 16|28s7 28s26 28s39 33s7
+X 12 genericbst.ads
+18k9*genericBST 48e15 16|2w6 57r25
+36U14 makeTree 16|59s13[57]
+X 16 main.adb
+4U11*main 4b11 60l5 60t9
 5A12 String10{string}<integer> 7r14 8r20 11r29 16r29 21r29 31r35 36r52 41r54
-. 46r32 46r49 52r36
-6R14 Customer 9e14 11r52 16r52 21r52 26r37 36r35 41r37 46r66 47r13 52r46
+. 46r32 46r49 52r28 57r36
+6R14 Customer 9e14 11r52 16r52 21r52 26r37 36r35 41r37 46r66 47r13 57r46
 7a7 Name{5A12} 13r32 18r32 23r32 28r19 38r22
 8a7 PhoneNumber{5A12} 28r51 43r22
-11V14 "<"{boolean} 11b14 11>17 11>40 14l9 14t11 52r56
+11V14 "<"{boolean} 11b14 11>17 11>40 14l9 14t11 57r56
 11a17 TheKey{5A12} 13r15
 11r40 ARecord{6R14} 13r24
-16V14 ">"{boolean} 16b14 16>17 16>40 19l9 19t11 52r61
+16V14 ">"{boolean} 16b14 16>17 16>40 19l9 19t11 57r61
 16a17 TheKey{5A12} 18r15
 16r40 ARecord{6R14} 18r24
-21V14 "="{boolean} 21b14 21>17 21>40 24l9 24t11 52r66
+21V14 "="{boolean} 21b14 21>17 21>40 24l9 24t11 57r66
 21a17 TheKey{5A12} 23r15
 21r40 ARecord{6R14} 23r24
-26U14 myPutRec 26b14 26>24 29l8 29t16 52r70
+26U14 myPutRec 26b14 26>24 29l8 29t16 57r70
 26r24 ARecord{6R14} 28r11 28r43
-31U14 myPutName 31b14 31>25 34l8 34t17 52r80
+31U14 myPutName 31b14 31>25 34l8 34t17 57r80
 31a25 Name{5A12} 33r11
-36V13 getName{5A12} 36b13 36>22 39l8 39t15 52r91
+36V13 getName{5A12} 36b13 36>22 39l8 39t15 57r91
 36r22 ARecord{6R14} 38r14
-41V13 getNumber{5A12} 41b13 41>24 44l8 44t17 52r100
+41V13 getNumber{5A12} 41b13 41>24 44l8 44t17 57r100
 41r24 ARecord{6R14} 43r14
-46V13 makeRecord{6R14} 46b13 46>25 46>42 50l8 50t18 52r111
+46V13 makeRecord{6R14} 46b13 46>25 46>42 50l8 50t18 57r111
 46a25 P{5A12} 47r26
 46a42 Q{5A12} 47r29
 47r7 rec{6R14} 49r14
-52K12 myBST[8|18]
+52V13 getVal{integer} 52b13 52>21 55l8 55t14 57r123
+52a21 P{5A12} 54r28
+57K12 myBST[12|18] 59r7
 

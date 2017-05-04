@@ -1,9 +1,8 @@
-with Ada.Sequential_IO;
+with Ada.Sequential_IO, Ada.Text_IO;
 
 generic
 	type Akey is private;
 	type BinarySearchTreeRecord is private;
-	-- These functions compare two nodes in the tree.
 	with function "<"(TheKey:  in Akey;  ARecord: in BinarySearchTreeRecord)
 		return Boolean;  -- Is TheKey less than the key of ARecord?
 	with function ">"(TheKey:  in Akey;  ARecord: in BinarySearchTreeRecord) 
@@ -15,8 +14,9 @@ generic
    with function getName (ARecord : in BinarySearchTreeRecord) return AKey;
    with function getNumber (ARecord : in BinarySearchTreeRecord) return AKey;
    with function makeRecord (P : in Akey; Q : in AKey) return BinarySearchTreeRecord;
+   with function getVal (P : in AKey) return Integer;
 package genericBST is
-	type BinarySearchTreePoint is limited private;
+	type BinarySearchTreePoint is private;
    type nodeStack is array(Positive range <>) of BinarySearchTreePoint;
    package KeyIO is new Ada.Sequential_IO(AKey);
    use KeyIO;
@@ -28,16 +28,14 @@ package genericBST is
 	procedure FindCustomerRecursive(Root: in BinarySearchTreePoint; 
 				          CustomerName:  in AKey;
 				          CustomerPoint:  out BinarySearchTreePoint);
-	function InOrderSuccessor(TreePoint: in BinarySearchTreePoint) 
+	function InOrderSuccessor(TreePoint: in BinarySearchTreePoint; Root : in BinarySearchTreePoint) 
 		return BinarySearchTreePoint;
 	procedure PreOrder(TreePoint: in out BinarySearchTreePoint; Root : in BinarySearchTreePoint);
-	procedure PostOrderIterative(TreePoint: in out BinarySearchTreePoint);
-	procedure PostOrderRecursive(TreePoint: in out BinarySearchTreePoint);
+	--procedure PostOrderIterative(TreePoint: in out BinarySearchTreePoint);
+	--procedure PostOrderRecursive(TreePoint: in out BinarySearchTreePoint);
    procedure makeTree(file : String);
-   type stack is array(Positive range <>) of BinarySearchTreeRecord;
-   --procedure push(key : in BinarySearchTreePoint);
-   --procedure pop(key : out BinarySearchTreePoint);
-   
+   procedure allocateNode (Q : out BinarySearchTreePoint; name: in AKey; number : in AKey);
+   procedure insertNode (P : in out BinarySearchTreePoint; Q : in out BinarySearchTreePoint; name : in Akey; number : IN Akey);
 private
 	type Node;
 	type BinarySearchTreePoint is access Node;
