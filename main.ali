@@ -5,6 +5,7 @@ P ZX
 
 RN
 RV NO_ALLOCATORS
+RV NO_DIRECT_BOOLEAN_OPERATORS
 RV NO_EXCEPTIONS
 RV NO_IO
 RV NO_IMPLICIT_CONDITIONALS
@@ -20,7 +21,7 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_IMPLICIT_LOOPS
 RV SPARK_05
 
-U main%b		main.adb		995538ce NE OO SU IL
+U main%b		main.adb		2c87e857 NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
@@ -58,11 +59,11 @@ D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
 D a-tiinio.ads		20160516092928 aa04e5d6 ada.text_io.integer_io%s
 D a-unccon.ads		20160516092931 f9eb8f06 ada.unchecked_conversion%s
 D a-uncdea.ads		20160516092931 f15a5ed1 ada.unchecked_deallocation%s
-D genericbst.ads	20170504180735 6cbc06d1 genericbst%s
-D genericbst.adb	20170504181420 e16ff5f8 genericbst%b
+D genericbst.ads	20170504224601 d96ed648 genericbst%s
+D genericbst.adb	20170504224727 0d019db0 genericbst%b
 D interfac.ads		20160516092928 5ab55268 interfaces%s
 D i-cstrea.ads		20160516092927 e53d8b8e interfaces.c_streams%s
-D main.adb		20170504180611 3bcf426f main%b
+D main.adb		20170504223743 3bcf426f main%b
 D system.ads		20160516092931 c3282aa7 system%s
 D s-bytswa.ads		20160516092930 799c7440 system.byte_swapping%s
 D s-carun8.ads		20160516092931 a903718d system.compare_array_unsigned_8%s

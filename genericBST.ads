@@ -30,7 +30,7 @@ package genericBST is
 	procedure FindCustomerRecursive(Root: in BinarySearchTreePoint; 
 				          CustomerName:  in AKey;
 				          CustomerPoint:  out BinarySearchTreePoint);
-	function InOrderSuccessor(TreePoint: in BinarySearchTreePoint; Root : in BinarySearchTreePoint) 
+	function InOrderSuccessor(TreePoint: in BinarySearchTreePoint) 
 		return BinarySearchTreePoint;
 	procedure PreOrder(TreePoint: in out BinarySearchTreePoint; Root : in BinarySearchTreePoint);
 	--procedure PostOrderIterative(TreePoint: in out BinarySearchTreePoint);
@@ -38,8 +38,8 @@ package genericBST is
    procedure makeTree(file : String);
    procedure allocateNode (Q : out BinarySearchTreePoint; name: in AKey; number : in AKey);
    procedure insertNode (P : in out BinarySearchTreePoint; Q : in out BinarySearchTreePoint; name : in Akey; number : IN Akey);
+   procedure ReverseInOrder (P : in out BinarySearchTreePoint; Root : in out BinarySearchTreePoint);
    procedure DeleteRandomNode(DeletePoint: in out BinarySearchTreePoint; Root : in out BinarySearchTreePoint);
-   procedure ReverseInOrder(treePoint: in BinarySearchTreePoint);
 private
 	type Node;
 	type BinarySearchTreePoint is access Node;

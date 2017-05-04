@@ -101,7 +101,7 @@ package body newWay is
    procedure makeTree is
       op : Integer;
       T1, T2 : String10;
-      tempNode1, tempNode2 : BinarySearchTreePoint;
+      tempNode1, tempNode : BinarySearchTreePoint;
    begin
       allocateNode(Root, "zzzzzzzzzz", "9999999999");
       put("Enter operation: ");
