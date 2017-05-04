@@ -16,7 +16,7 @@ generic
    with function getNumber (ARecord : in BinarySearchTreeRecord) return AKey;
    with function makeRecord (P : in Akey; Q : in AKey) return BinarySearchTreeRecord;
    with function getVal (P : in AKey) return Integer;
-   headVal : AKey;
+   dummy : AKey;
 package genericBST is
 	type BinarySearchTreePoint is private;
    type nodeStack is array(Positive range <>) of BinarySearchTreePoint;

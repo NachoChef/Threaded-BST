@@ -35,7 +35,7 @@ package ada_main is
    pragma Export (C, main, "main");
 
    type Version_32 is mod 2 ** 32;
-   u00001 : constant Version_32 := 16#1afcb69c#;
+   u00001 : constant Version_32 := 16#ac3a6429#;
    pragma Export (C, u00001, "testB");
    u00002 : constant Version_32 := 16#b6df930e#;
    pragma Export (C, u00002, "system__standard_libraryB");
@@ -239,14 +239,28 @@ package ada_main is
    pragma Export (C, u00101, "system__val_lliB");
    u00102 : constant Version_32 := 16#590ccc07#;
    pragma Export (C, u00102, "system__val_lliS");
-   u00103 : constant Version_32 := 16#a6359005#;
-   pragma Export (C, u00103, "system__memoryB");
-   u00104 : constant Version_32 := 16#9a554c93#;
-   pragma Export (C, u00104, "system__memoryS");
+   u00103 : constant Version_32 := 16#343a0e82#;
+   pragma Export (C, u00103, "newwayB");
+   u00104 : constant Version_32 := 16#dd4d6e16#;
+   pragma Export (C, u00104, "newwayS");
+   u00105 : constant Version_32 := 16#5b9edcc4#;
+   pragma Export (C, u00105, "system__compare_array_unsigned_8B");
+   u00106 : constant Version_32 := 16#6a2b5b2a#;
+   pragma Export (C, u00106, "system__compare_array_unsigned_8S");
+   u00107 : constant Version_32 := 16#5f72f755#;
+   pragma Export (C, u00107, "system__address_operationsB");
+   u00108 : constant Version_32 := 16#d0249494#;
+   pragma Export (C, u00108, "system__address_operationsS");
+   u00109 : constant Version_32 := 16#a6359005#;
+   pragma Export (C, u00109, "system__memoryB");
+   u00110 : constant Version_32 := 16#9a554c93#;
+   pragma Export (C, u00110, "system__memoryS");
    --  BEGIN ELABORATION ORDER
    --  ada%s
    --  interfaces%s
    --  system%s
+   --  system.address_operations%s
+   --  system.address_operations%b
    --  system.case_util%s
    --  system.case_util%b
    --  system.htable%s
@@ -307,6 +321,8 @@ package ada_main is
    --  ada.exceptions.last_chance_handler%b
    --  ada.exceptions.traceback%s
    --  system.address_image%s
+   --  system.compare_array_unsigned_8%s
+   --  system.compare_array_unsigned_8%b
    --  system.exception_table%s
    --  system.exception_table%b
    --  ada.io_exceptions%s
@@ -347,6 +363,8 @@ package ada_main is
    --  ada.text_io.integer_aux%b
    --  ada.integer_text_io%s
    --  ada.integer_text_io%b
+   --  newway%s
+   --  newway%b
    --  test%b
    --  END ELABORATION ORDER
 

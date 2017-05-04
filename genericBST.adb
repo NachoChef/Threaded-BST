@@ -74,7 +74,7 @@ package body genericBST is
          end if;
       end loop;
       CustomerPoint := T;
-      if T = null then
+      if T = Root then
          put_line("Record not found!");
       else
          put("Info found: ");
@@ -267,7 +267,7 @@ package body genericBST is
    procedure makeTree(file : String) is
       Input_Exception : Exception;
       input : KeyIO.File_Type;
-      Root : BinarySearchTreePoint;
+      Root : BinarySearchTreePoint := new Node'(null, null, false, true, dummy, dummy);
       op, T1, T2 : AKey;
       tempNode, tempNode2 : BinarySearchTreePoint;
    begin

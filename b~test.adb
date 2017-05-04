@@ -21,6 +21,7 @@ package body ada_main is
    E073 : Short_Integer; pragma Import (Ada, E073, "ada__finalization_E");
    E017 : Short_Integer; pragma Import (Ada, E017, "system__secondary_stack_E");
    E051 : Short_Integer; pragma Import (Ada, E051, "ada__text_io_E");
+   E104 : Short_Integer; pragma Import (Ada, E104, "newway_E");
 
    Local_Priority_Specific_Dispatching : constant String := "";
    Local_Interrupt_States : constant String := "";
@@ -165,6 +166,7 @@ package body ada_main is
       Ada.Text_Io'Elab_Spec;
       Ada.Text_Io'Elab_Body;
       E051 := E051 + 1;
+      E104 := E104 + 1;
    end adainit;
 
    procedure Ada_Main_Program;
@@ -200,6 +202,7 @@ package body ada_main is
    end;
 
 --  BEGIN Object file/option list
+   --   ./newway.o
    --   ./test.o
    --   -L./
    --   -L/Users/justinjones/Documents/Lab5/
