@@ -35,7 +35,7 @@ package ada_main is
    pragma Export (C, main, "main");
 
    type Version_32 is mod 2 ** 32;
-   u00001 : constant Version_32 := 16#7269afa8#;
+   u00001 : constant Version_32 := 16#995538ce#;
    pragma Export (C, u00001, "mainB");
    u00002 : constant Version_32 := 16#b6df930e#;
    pragma Export (C, u00002, "system__standard_libraryB");
@@ -239,9 +239,9 @@ package ada_main is
    pragma Export (C, u00101, "system__val_lliB");
    u00102 : constant Version_32 := 16#590ccc07#;
    pragma Export (C, u00102, "system__val_lliS");
-   u00103 : constant Version_32 := 16#75c9523d#;
+   u00103 : constant Version_32 := 16#43f58f59#;
    pragma Export (C, u00103, "genericbstB");
-   u00104 : constant Version_32 := 16#24b5f930#;
+   u00104 : constant Version_32 := 16#ded630ec#;
    pragma Export (C, u00104, "genericbstS");
    u00105 : constant Version_32 := 16#bab45ee7#;
    pragma Export (C, u00105, "system__byte_swappingS");

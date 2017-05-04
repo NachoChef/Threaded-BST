@@ -20,7 +20,7 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_IMPLICIT_LOOPS
 RV SPARK_05
 
-U main%b		main.adb		7269afa8 NE OO SU IL
+U main%b		main.adb		995538ce NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
@@ -58,11 +58,11 @@ D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
 D a-tiinio.ads		20160516092928 aa04e5d6 ada.text_io.integer_io%s
 D a-unccon.ads		20160516092931 f9eb8f06 ada.unchecked_conversion%s
 D a-uncdea.ads		20160516092931 f15a5ed1 ada.unchecked_deallocation%s
-D genericbst.ads	20170504075810 96dfcf0d genericbst%s
-D genericbst.adb	20170504084929 2d30e140 genericbst%b
+D genericbst.ads	20170504180735 6cbc06d1 genericbst%s
+D genericbst.adb	20170504181420 e16ff5f8 genericbst%b
 D interfac.ads		20160516092928 5ab55268 interfaces%s
 D i-cstrea.ads		20160516092927 e53d8b8e interfaces.c_streams%s
-D main.adb		20170504072024 2a901cd5 main%b
+D main.adb		20170504180611 3bcf426f main%b
 D system.ads		20160516092931 c3282aa7 system%s
 D s-bytswa.ads		20160516092930 799c7440 system.byte_swapping%s
 D s-carun8.ads		20160516092931 a903718d system.compare_array_unsigned_8%s
@@ -89,37 +89,38 @@ X 9 a-textio.ads
 166U14*New_Line 17|28s65
 242U14*Put 17|28s7 28s26 28s39 33s7
 X 13 genericbst.ads
-19k9*genericBST 53e15 17|2w6 57r25
-37U14 makeTree 17|59s13[57]
+20k9*genericBST 54e15 17|2w6 59r25
+38U14 makeTree 17|61s13[59]
 X 17 main.adb
-4U11*main 4b11 60l5 60t9
+4U11*main 4b11 62l5 62t9
 5A12 String10{string}<integer> 7r14 8r20 11r29 16r29 21r29 31r35 36r52 41r54
-. 46r32 46r49 52r28 57r36
-6R14 Customer 9e14 11r52 16r52 21r52 26r37 36r35 41r37 46r66 47r13 57r46
+. 46r32 46r49 52r28 59r36
+6R14 Customer 9e14 11r52 16r52 21r52 26r37 36r35 41r37 46r66 47r13 59r46
 7a7 Name{5A12} 13r32 18r32 23r32 28r19 38r22
 8a7 PhoneNumber{5A12} 28r51 43r22
-11V14 "<"{boolean} 11b14 11>17 11>40 14l9 14t11 57r56
+11V14 "<"{boolean} 11b14 11>17 11>40 14l9 14t11 59r56
 11a17 TheKey{5A12} 13r15
 11r40 ARecord{6R14} 13r24
-16V14 ">"{boolean} 16b14 16>17 16>40 19l9 19t11 57r61
+16V14 ">"{boolean} 16b14 16>17 16>40 19l9 19t11 59r61
 16a17 TheKey{5A12} 18r15
 16r40 ARecord{6R14} 18r24
-21V14 "="{boolean} 21b14 21>17 21>40 24l9 24t11 57r66
+21V14 "="{boolean} 21b14 21>17 21>40 24l9 24t11 59r66
 21a17 TheKey{5A12} 23r15
 21r40 ARecord{6R14} 23r24
-26U14 myPutRec 26b14 26>24 29l8 29t16 57r70
+26U14 myPutRec 26b14 26>24 29l8 29t16 59r70
 26r24 ARecord{6R14} 28r11 28r43
-31U14 myPutName 31b14 31>25 34l8 34t17 57r80
+31U14 myPutName 31b14 31>25 34l8 34t17 59r80
 31a25 Name{5A12} 33r11
-36V13 getName{5A12} 36b13 36>22 39l8 39t15 57r91
+36V13 getName{5A12} 36b13 36>22 39l8 39t15 59r91
 36r22 ARecord{6R14} 38r14
-41V13 getNumber{5A12} 41b13 41>24 44l8 44t17 57r100
+41V13 getNumber{5A12} 41b13 41>24 44l8 44t17 59r100
 41r24 ARecord{6R14} 43r14
-46V13 makeRecord{6R14} 46b13 46>25 46>42 50l8 50t18 57r111
+46V13 makeRecord{6R14} 46b13 46>25 46>42 50l8 50t18 59r111
 46a25 P{5A12} 47r26
 46a42 Q{5A12} 47r29
 47r7 rec{6R14} 49r14
-52V13 getVal{integer} 52b13 52>21 55l8 55t14 57r123
+52V13 getVal{integer} 52b13 52>21 55l8 55t14 59r123
 52a21 P{5A12} 54r28
-57K12 myBST[13|19] 59r7
+57a4 head{string} 59r131
+59K12 myBST[13|20] 61r7
 

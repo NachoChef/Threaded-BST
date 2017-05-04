@@ -54,7 +54,9 @@ procedure main is
       return Integer'Value(P);
    end getVal;
    
-   package myBST is new genericBST(String10, Customer,"<", ">", "=", myPutRec, myPutName, getName, getNumber, makeRecord, getVal);
+   head : String(1..10) := "zzzzzzzzzz";
+   
+   package myBST is new genericBST(String10, Customer,"<", ">", "=", myPutRec, myPutName, getName, getNumber, makeRecord, getVal, head);
 begin
       myBST.makeTree("input.txt");
 end main;

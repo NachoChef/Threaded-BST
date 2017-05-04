@@ -50,7 +50,7 @@ package body genericBST is
          put("Right subtree of "); myputname(getname(P.Info)); New_Line;
          Q.RTag := P.RTag; Q.RLink := P.RLink;
          P.RLink := Q; P.RTag := true;
-         Q.LTag := false; --Q.LLink := P; --caused error
+         Q.LTag := false; --Q.LLink := P; --causes error, accounted for in other functions
       end if;
    end insertNode;
                       
@@ -309,6 +309,8 @@ package body genericBST is
 --                   FindCustomerRecursive(Root, T1, tempNode);
 --                   DeleteRandomNode(tempNode, Root);
                when 7 =>
+                  put("Traversing in reverse order from "); myputname(getname(Root.Info));
+                  New_Line;
                   ReverseInOrder(Root);
                when 8 =>
                   Preorder(Root, Root);
