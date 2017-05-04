@@ -159,27 +159,4 @@ PACKAGE BODY binarysearchtree IS
         RETURN treepoint.info.phonenumber;
     END customerphone;
 
-    PROCEDURE inordertraversal(startnode : IN binarysearchtreepoint) IS
-        PACKAGE node_stack IS NEW gstack(count, binarysearchtreepoint);
-        USE node_stack;
-        p : binarysearchtreepoint;
-        x : binarysearchtreepoint;
-    BEGIN
-        p := startnode;
-        LOOP
-            IF p /= NULL THEN
-                push(p);
-                p := p.llink;
-            ELSE
-                IF empty = 1 THEN
-                    EXIT;
-                ELSE
-                    pop(x);
-                    put_line(string(x.info.name) & string(x.info.phonenumber));
-                    p := x.rlink;
-                END IF;
-            END IF;
-        END LOOP;
-    END;
-
 END binarysearchtree;

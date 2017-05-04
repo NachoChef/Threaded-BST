@@ -1,4 +1,5 @@
 with Ada.Sequential_IO, Ada.Text_IO;
+with Ada.Unchecked_Deallocation;
 
 generic
 	type Akey is private;
@@ -36,6 +37,8 @@ package genericBST is
    procedure makeTree(file : String);
    procedure allocateNode (Q : out BinarySearchTreePoint; name: in AKey; number : in AKey);
    procedure insertNode (P : in out BinarySearchTreePoint; Q : in out BinarySearchTreePoint; name : in Akey; number : IN Akey);
+   procedure DeleteRandomNode(DeletePoint: in out BinarySearchTreePoint; Root : in out BinarySearchTreePoint);
+   procedure ReverseInOrder(treePoint: in BinarySearchTreePoint);
 private
 	type Node;
 	type BinarySearchTreePoint is access Node;
@@ -45,4 +48,6 @@ private
 			Ltag, Rtag : Boolean := false;  -- True indicates pointer to lower level, False a thread.
 			Info : BinarySearchTreeRecord;
 		end record;
+   procedure Free is new Ada.Unchecked_Deallocation(Node, BinarySearchTreePoint);
+   
 end genericBST;
