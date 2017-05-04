@@ -5,7 +5,7 @@ package body genericBST is
       P : BinarySearchTreePoint;
       T : BinarySearchTreePoint; 
    begin
-      put_line("inserting");
+      put_line("- inserting -");
       if Root = null then
          put_line("NEW ROOT");
          allocateNode(T, custName, custPhone);
@@ -42,12 +42,12 @@ package body genericBST is
    procedure insertNode (P : in out BinarySearchTreePoint; Q : in out BinarySearchTreePoint; name : in Akey; number : IN Akey) is
    begin
       if name < P.Info then
-         put("Left subtree of "); myputname(getname(P.Info));
+         put("Left subtree of "); myputname(getname(P.Info)); New_Line;
          Q.LTag := P.LTag; Q.LLink := P.LLink;
          P.LLink := Q; P.LTag := true;
          Q.RTag := false; Q.RLink := P;
       else
-         put("Right subtree of "); myputname(getname(P.Info));
+         put("Right subtree of "); myputname(getname(P.Info)); New_Line;
          Q.RTag := P.RTag; Q.RLink := P.RLink;
          P.RLink := Q; P.RTag := true;
          Q.LTag := false; --Q.LLink := P; --caused error
@@ -113,7 +113,6 @@ package body genericBST is
          Q := Root;
       else
          if P.RTag then
-            
             while Q.LTag loop
                Q := Q.LLink;
             end loop;
@@ -180,7 +179,11 @@ package body genericBST is
    begin
       put("Traversing preorder from "); myPutRec(TreePoint.Info);
       if T = Root then
-         T := T.LLink;
+         if T.LTag then
+            T := T.LLink;
+         else
+            T := T.RLink;
+         end if;
       else
          myPutRec(T.Info);
       end if;

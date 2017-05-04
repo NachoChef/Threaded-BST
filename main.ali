@@ -59,7 +59,7 @@ D a-tiinio.ads		20160516092928 aa04e5d6 ada.text_io.integer_io%s
 D a-unccon.ads		20160516092931 f9eb8f06 ada.unchecked_conversion%s
 D a-uncdea.ads		20160516092931 f15a5ed1 ada.unchecked_deallocation%s
 D genericbst.ads	20170504075810 96dfcf0d genericbst%s
-D genericbst.adb	20170504083529 4169ce18 genericbst%b
+D genericbst.adb	20170504084929 2d30e140 genericbst%b
 D interfac.ads		20160516092928 5ab55268 interfaces%s
 D i-cstrea.ads		20160516092927 e53d8b8e interfaces.c_streams%s
 D main.adb		20170504072024 2a901cd5 main%b
