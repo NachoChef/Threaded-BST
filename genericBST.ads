@@ -1,5 +1,4 @@
-with Ada.Sequential_IO, Ada.Text_IO;
-with Ada.Unchecked_Deallocation;
+with Ada.Sequential_IO, Ada.Text_IO, gstack;
 
 generic
 	type Akey is private;
@@ -19,7 +18,6 @@ generic
    dummy : AKey;
 package genericBST is
 	type BinarySearchTreePoint is private;
-   type nodeStack is array(Positive range <>) of BinarySearchTreePoint;
    package KeyIO is new Ada.Sequential_IO(AKey);
    use KeyIO;
 	procedure InsertBinarySearchTree(Root:  in out BinarySearchTreePoint;
@@ -33,13 +31,13 @@ package genericBST is
 	function InOrderSuccessor(TreePoint: in BinarySearchTreePoint) 
 		return BinarySearchTreePoint;
 	procedure PreOrder(TreePoint: in out BinarySearchTreePoint; Root : in BinarySearchTreePoint);
-	--procedure PostOrderIterative(TreePoint: in out BinarySearchTreePoint);
+	procedure PostOrderIterative(TreePoint: in out BinarySearchTreePoint);
 	--procedure PostOrderRecursive(TreePoint: in out BinarySearchTreePoint);
    procedure makeTree(file : String);
    procedure allocateNode (Q : out BinarySearchTreePoint; name: in AKey; number : in AKey);
    procedure insertNode (P : in out BinarySearchTreePoint; Q : in out BinarySearchTreePoint; name : in Akey; number : IN Akey);
-   procedure ReverseInOrder (P : in out BinarySearchTreePoint; Root : in out BinarySearchTreePoint);
-   procedure DeleteRandomNode(DeletePoint: in out BinarySearchTreePoint; Root : in out BinarySearchTreePoint);
+   procedure ReverseInOrder (P : in out BinarySearchTreePoint);
+   procedure DeleteRandomNode(Q : in out BinarySearchTreePoint; Root : in out BinarySearchTreePoint);
 private
 	type Node;
 	type BinarySearchTreePoint is access Node;
@@ -49,6 +47,9 @@ private
 			Ltag, Rtag : Boolean := false;  -- True indicates pointer to lower level, False a thread.
 			Info : BinarySearchTreeRecord;
 		end record;
-   procedure Free is new Ada.Unchecked_Deallocation(Node, BinarySearchTreePoint);
-   
+   type stackRec is
+      record
+         num : Integer;
+         point : BinarySearchTreePoint;
+      end record;
 end genericBST;

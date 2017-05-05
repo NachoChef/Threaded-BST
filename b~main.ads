@@ -35,7 +35,7 @@ package ada_main is
    pragma Export (C, main, "main");
 
    type Version_32 is mod 2 ** 32;
-   u00001 : constant Version_32 := 16#2c87e857#;
+   u00001 : constant Version_32 := 16#896e548c#;
    pragma Export (C, u00001, "mainB");
    u00002 : constant Version_32 := 16#b6df930e#;
    pragma Export (C, u00002, "system__standard_libraryB");
@@ -239,28 +239,32 @@ package ada_main is
    pragma Export (C, u00101, "system__val_lliB");
    u00102 : constant Version_32 := 16#590ccc07#;
    pragma Export (C, u00102, "system__val_lliS");
-   u00103 : constant Version_32 := 16#1a493788#;
+   u00103 : constant Version_32 := 16#46dcc807#;
    pragma Export (C, u00103, "genericbstB");
-   u00104 : constant Version_32 := 16#6b04e075#;
+   u00104 : constant Version_32 := 16#8fdf673b#;
    pragma Export (C, u00104, "genericbstS");
-   u00105 : constant Version_32 := 16#bab45ee7#;
-   pragma Export (C, u00105, "system__byte_swappingS");
-   u00106 : constant Version_32 := 16#796b5f0d#;
-   pragma Export (C, u00106, "system__sequential_ioB");
-   u00107 : constant Version_32 := 16#29448057#;
-   pragma Export (C, u00107, "system__sequential_ioS");
-   u00108 : constant Version_32 := 16#5b9edcc4#;
-   pragma Export (C, u00108, "system__compare_array_unsigned_8B");
-   u00109 : constant Version_32 := 16#6a2b5b2a#;
-   pragma Export (C, u00109, "system__compare_array_unsigned_8S");
-   u00110 : constant Version_32 := 16#5f72f755#;
-   pragma Export (C, u00110, "system__address_operationsB");
-   u00111 : constant Version_32 := 16#d0249494#;
-   pragma Export (C, u00111, "system__address_operationsS");
-   u00112 : constant Version_32 := 16#a6359005#;
-   pragma Export (C, u00112, "system__memoryB");
-   u00113 : constant Version_32 := 16#9a554c93#;
-   pragma Export (C, u00113, "system__memoryS");
+   u00105 : constant Version_32 := 16#3cde48d3#;
+   pragma Export (C, u00105, "gstackB");
+   u00106 : constant Version_32 := 16#b0686544#;
+   pragma Export (C, u00106, "gstackS");
+   u00107 : constant Version_32 := 16#bab45ee7#;
+   pragma Export (C, u00107, "system__byte_swappingS");
+   u00108 : constant Version_32 := 16#796b5f0d#;
+   pragma Export (C, u00108, "system__sequential_ioB");
+   u00109 : constant Version_32 := 16#29448057#;
+   pragma Export (C, u00109, "system__sequential_ioS");
+   u00110 : constant Version_32 := 16#5b9edcc4#;
+   pragma Export (C, u00110, "system__compare_array_unsigned_8B");
+   u00111 : constant Version_32 := 16#6a2b5b2a#;
+   pragma Export (C, u00111, "system__compare_array_unsigned_8S");
+   u00112 : constant Version_32 := 16#5f72f755#;
+   pragma Export (C, u00112, "system__address_operationsB");
+   u00113 : constant Version_32 := 16#d0249494#;
+   pragma Export (C, u00113, "system__address_operationsS");
+   u00114 : constant Version_32 := 16#a6359005#;
+   pragma Export (C, u00114, "system__memoryB");
+   u00115 : constant Version_32 := 16#9a554c93#;
+   pragma Export (C, u00115, "system__memoryS");
    --  BEGIN ELABORATION ORDER
    --  ada%s
    --  interfaces%s
@@ -372,6 +376,8 @@ package ada_main is
    --  ada.text_io.integer_aux%b
    --  ada.integer_text_io%s
    --  ada.integer_text_io%b
+   --  gstack%s
+   --  gstack%b
    --  genericbst%s
    --  genericbst%b
    --  main%b

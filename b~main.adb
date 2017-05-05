@@ -20,8 +20,9 @@ package body ada_main is
    E075 : Short_Integer; pragma Import (Ada, E075, "system__finalization_root_E");
    E073 : Short_Integer; pragma Import (Ada, E073, "ada__finalization_E");
    E015 : Short_Integer; pragma Import (Ada, E015, "system__secondary_stack_E");
-   E107 : Short_Integer; pragma Import (Ada, E107, "system__sequential_io_E");
+   E109 : Short_Integer; pragma Import (Ada, E109, "system__sequential_io_E");
    E051 : Short_Integer; pragma Import (Ada, E051, "ada__text_io_E");
+   E106 : Short_Integer; pragma Import (Ada, E106, "gstack_E");
    E104 : Short_Integer; pragma Import (Ada, E104, "genericbst_E");
 
    Local_Priority_Specific_Dispatching : constant String := "";
@@ -38,7 +39,7 @@ package body ada_main is
       begin
          F1;
       end;
-      E107 := E107 - 1;
+      E109 := E109 - 1;
       declare
          procedure F2;
          pragma Import (Ada, F2, "system__sequential_io__finalize_spec");
@@ -172,10 +173,11 @@ package body ada_main is
       System.Secondary_Stack'Elab_Body;
       E015 := E015 + 1;
       System.Sequential_Io'Elab_Spec;
-      E107 := E107 + 1;
+      E109 := E109 + 1;
       Ada.Text_Io'Elab_Spec;
       Ada.Text_Io'Elab_Body;
       E051 := E051 + 1;
+      E106 := E106 + 1;
       E104 := E104 + 1;
    end adainit;
 
@@ -212,6 +214,7 @@ package body ada_main is
    end;
 
 --  BEGIN Object file/option list
+   --   ./gstack.o
    --   ./genericbst.o
    --   ./main.o
    --   -L./
