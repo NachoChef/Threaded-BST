@@ -1,56 +1,66 @@
-with Ada.Text_IO, Ada.Integer_Text_IO; use Ada.Text_IO, Ada.Integer_Text_IO;
+--Justin Jones
+--COSC 3319.01 Spring 2017
+--Lab 5
+--
+--'A' Option
+
+
 package body genericBST is
    procedure InsertBinarySearchTree(Root:  in out BinarySearchTreePoint;
 				          custName: in AKey; custPhone: AKey) is
-      P : BinarySearchTreePoint;
-      T : BinarySearchTreePoint; 
+      P, T : BinarySearchTreePoint;
    begin
-      put_line("inserting");
-      if Root = null then
-         put_line("NEW ROOT");
-         allocateNode(T, custName, custPhone);
-         Root := T;
-         myPutRec(Root.Info);
-      else
-         P := Root;
-         loop
-            if custName < P.Info then --ins left
-               if P.LLink /= null then
-                  P := P.LLink;
-               else
-                  allocateNode(T, custname, custphone);
-                  insertNode(P, T, custname, custphone);
-                  myputrec(T.Info);
-                  exit;
-               end if;
-            elsif custName > P.Info then --ins right
-               if P.RLink /= null then
-                  P := P.RLink;
-               else 
-                  allocateNode(T, custname, custphone);
-                  insertNode(P, T, custname, custphone);
-                  myputrec(T.Info);
-                  exit;
-               end if;
+      put_line("- inserting -");
+      P := Root;
+      loop
+         if custName < P.Info then --ins left
+            if P.LTag then
+               P := P.LLink;
             else
-               exit; --duplicate
+               allocateNode(T, custname, custphone);
+               insertNode(P, T, custname, custphone);
+               myputrec(T.Info);
+               exit;
             end if;
-         end loop;
-      end if;
+         elsif custName > P.Info then --ins right
+            if P.RTag then
+               P := P.RLink;
+            else 
+               allocateNode(T, custname, custphone);
+               insertNode(P, T, custname, custphone);
+               myputrec(T.Info);
+               exit;
+            end if;
+         else
+            exit; --duplicate
+         end if;
+      end loop;
    end InsertBinarySearchTree;
    
-   procedure insertNode (P : in out BinarySearchTreePoint; Q : in out BinarySearchTreePoint; name : in Akey; number : IN Akey) is
+   procedure insertNode (P : in out BinarySearchTreePoint; 
+                        Q : in out BinarySearchTreePoint; 
+                        name : in Akey; number : IN Akey) is
    begin
       if name < P.Info then
-         put_line("Left subtree");
+         if getName(P.Info) /= dummy then
+            put("Left subtree of "); 
+            myputname(getname(P.Info)); New_Line;
+         else
+            put_line("New root node!");
+         end if;
          Q.LTag := P.LTag; Q.LLink := P.LLink;
          P.LLink := Q; P.LTag := true;
          Q.RTag := false; Q.RLink := P;
       else
-         put_line("Right subtree");
+         if getName(P.Info) /= dummy then
+            put("Right subtree of "); 
+            myputname(getname(P.Info)); New_Line;
+         else
+            put("New root node!");
+         end if;
          Q.RTag := P.RTag; Q.RLink := P.RLink;
          P.RLink := Q; P.RTag := true;
-         Q.LTag := false; Q.LLink := P; --caused error
+         Q.LTag := false; Q.LLink := P; 
       end if;
    end insertNode;
                       
@@ -61,20 +71,16 @@ package body genericBST is
    begin
       T := Root;
       loop
-         if T /= null then
-            if CustomerName < T.Info then
-               T := T.LLink;
-            elsif CustomerName > T.Info then
-               T := T.RLink;
-            else
-               exit;
-            end if;
+         if CustomerName < T.Info and T.LTag then
+            T := T.LLink;
+         elsif CustomerName > T.Info and T.RTag then
+            T := T.RLink;
          else
             exit;
          end if;
       end loop;
       CustomerPoint := T;
-      if T = null then
+      if getName(T.Info) /= customerName then
          put_line("Record not found!");
       else
          put("Info found: ");
@@ -85,57 +91,91 @@ package body genericBST is
 	procedure FindCustomerRecursive(Root: in BinarySearchTreePoint; 
 				          CustomerName:  in AKey;
 				          CustomerPoint:  out BinarySearchTreePoint) is
-      T : BinarySearchTreePoint;
+      T : BinarySearchTreePoint := Root;
    begin
-      T := Root;
-      if T /= null then
-         if CustomerName = T.Info then
-             CustomerPoint := T;
-             put("Info found: "); myputrec(CustomerPoint.Info);
-         elsif CustomerName > T.Info then
-             FindCustomerRecursive(T.RLink, CustomerName, CustomerPoint);
-         else
-             FindCustomerRecursive(T.LLink, CustomerName, CustomerPoint);
-         end if;
-      else
-         CustomerPoint := T;
+      if CustomerName > T.Info and T.RTag then
+         FindCustomerRecursive(T.RLink, CustomerName, CustomerPoint);
+      elsif CustomerName < T.Info and T.LTag then
+         FindCustomerRecursive(T.LLink, CustomerName, CustomerPoint);
+      elsif CustomerName /= getName(T.Info) then
+         CustomerPoint := null;
          put_line("Record not found!");
+      else
+         put("Info found: "); myputrec(T.Info);
       end if;
    end FindCustomerRecursive;
                       
-	function InOrderSuccessor(TreePoint: in BinarySearchTreePoint; Root : in BinarySearchTreePoint) 
+	function InOrderSuccessor(TreePoint: in BinarySearchTreePoint) 
 		return BinarySearchTreePoint is
-      Q, P : BinarySearchTreePoint;
+      T : BinarySearchTreePoint := TreePoint;
    begin
-      P := TreePoint;
-      Q := P.RLink;
-      if Q = null then
-         Q := Root;
-         while Q.LTag /= false loop
-            Q := Q.LLink;
+      if T.RTag then
+         T := T.RLink;
+         while T.LTag loop
+            T := T.LLink;
          end loop;
-         P := Q;
       else
-         if Q.LTag = false then
-            P := Q;
-         else
-            while Q.LTag loop
-               Q := Q.LLink;
-            end loop;
-            P := Q;
-         end if;
+         T := T.RLink;
       end if;
-      return P;
+      return T;
    end InOrderSuccessor;
    
-	procedure PreOrder(TreePoint: in out BinarySearchTreePoint; Root : in BinarySearchTreePoint) is
+   procedure DeleteRandomNode(Q: in out BinarySearchTreePoint; 
+                              Root : in out BinarySearchTreePoint) is
+      R, S, T : BinarySearchTreePoint;
+   begin
+      put("Deleting "); myputrec(Q.Info);
+      T := Q;
+      if not T.RTag then
+         Q := T.LLink;
+      else
+         if T.RTag then
+            Q := T.RLink;
+         end if;
+         R := T.RLink;
+         if not R.LTag then
+            R.LLink := T.LLink;
+            R.LTag := T.LTag;
+            Q := R;
+         else
+            S := R.LLink;
+            while S.LTag loop
+               R := S; S := R.LLink;
+            end loop;
+            S.LLink := T.LLink; S.LTag := T.LTag;
+            R.LLink := S.RLink; R.LTag := S.RTag;
+            S.RLink := T.RLink; S.RTag := T.RTag;
+            Q := S;
+         end if;
+      end if;
+   myputrec(T.Info);
+   if Root.LLink = T then 
+      Root.LLink := Q;
+   else
+      if T.LLink = Q then
+         T.LLink := Q;
+      else
+         T.RLink := Q;
+      end if;
+   end if;
+   end DeleteRandomNode;
+   
+	procedure PreOrder(TreePoint: in out BinarySearchTreePoint; 
+                     Root : in BinarySearchTreePoint) is
       T : BinarySearchTreePoint := TreePoint;
       Q : BinarySearchTreePoint;
    begin
-      if TreePoint = Root then
-         T := TreePoint.LLink;
+      put("Traversing in preorder from "); 
+      myPutName(getName(TreePoint.Info));
+      New_Line;
+      if T = Root.LLink then
+         if T.LTag then
+            T := T.LLink;
+         else
+            T := T.RLink;
+         end if;
       else
-         myPutRec(TreePoint.Info);
+         myPutRec(T.Info);
       end if;
       Q := T;
       loop
@@ -154,80 +194,101 @@ package body genericBST is
          end if;
          exit when Q = T;
       end loop;
-   end PreOrder;  
+   end PreOrder;
    
--- 	procedure PostOrderIterative(TreePoint: in out BinarySearchTreePoint) is
---       P, T : BinarySearchTreePoint;
---    begin
---       if TreePoint = R then
--- 			P := TreePoint.LLink;
--- 		else 
--- 			P := TreePoint;
--- 		end if;
--- 		T := P;
--- 		loop
--- 			Push(T);
--- 			if P.RTag then
--- 				T := P.RLink;
--- 			else
--- 				while not T.LTag loop
--- 					T := T.LLink;
--- 				end loop;
---          T := T.LLink;
--- 			end if;
--- 			P := T;
--- 			if TreePoint = R then
--- 				exit when P = TreePoint.LLink;
--- 			else 
--- 				exit when P = TreePoint;
--- 			end if;
--- 		end loop; 
--- 		while not empty loop
--- 			pop(P);
--- 			myPutRec(P.Info);
--- 		end loop;
---    end PostOrderIterative;
-   
--- 	procedure PostOrderRecursive(TreePoint: in out BinarySearchTreePoint) is
---       Phone : AKey;
---    begin
---       if TreePoint /= R then
--- 			if TreePoint.LTag then
--- 				PostOrderRecursive(TreePoint.LLink);
--- 			end if;
--- 			if TreePoint.RTag then
--- 				PostOrderRecursive(TreePoint.RLink);
--- 			end if;
--- 			myPutRec(TreePoint.Info);
---       else
--- 			PostOrderRecursive(TreePoint.LLink);
--- 		end if;
---    end PostOrderRecursive;
-   
-   
-----------------------------------------------------------------------
-   procedure allocateNode(Q : out BinarySearchTreePoint; name: in AKey; number : in AKey) IS
+   --the specification calls for iterative, last page of lab says recursive
+   --not utilized, but added to be thorough
+   procedure PreOrderRecursive (P : in out BinarySearchTreePoint) is
    begin
-      Q := new Node;
-      Q.Info := makeRecord(name, number);
-      Q.RTag := true; Q.LTag := false;
+      myPutRec(P.Info);
+      if P.LTag then
+         PreOrderRecursive(P.LLink);
+      end if;
+      if P.RTag then
+         PreOrderRecursive(P.RLink);
+      end if;
+   end PreOrderRecursive;
+   
+   procedure ReverseInOrder (P : in out BinarySearchTreePoint) is
+      T : BinarySearchTreePoint := P;
+   begin
+      if P.RTag then
+         ReverseInOrder(P.RLink);
+      end if;
+      myPutRec(P.Info);
+      if P.LTag then
+         ReverseInOrder(P.LLink);
+      end if;
+   end ReverseInOrder;
+   
+   function PostOrderSuccessor(TreePoint : in out BinarySearchTreePoint) 
+                              return BinarySearchTreePoint is
+      Q, P : BinarySearchTreePoint := TreePoint;
+   begin
+      if P.RTag then
+         Q := P.RLink;
+      else
+         while not Q.LTag loop
+            Q := Q.LLink;
+         end loop;
+         Q := Q.LLink;
+      end if;
+      return Q;
+   end PostOrderSuccessor;
+   
+ 	procedure PostOrderIterative(TreePoint: in out BinarySearchTreePoint) is
+      P, T : BinarySearchTreePoint := TreePoint;
+      package stack is new gstack(50, BinarySearchTreePoint);
+   begin
+      put_line("Traversing in postorder, iteratively: ");
+      P := PostOrderSuccessor(T);   --will loop through reverse order
+      stack.push(P);
+      P := PostOrderSuccessor(P);
+		while P /= T loop
+         stack.push(P);
+         P := PostOrderSuccessor(P);
+      end loop;
+      
+      while not stack.isEmpty loop
+         stack.pop(P);
+         myPutRec(P.Info);
+      end loop;
+      myPutRec(TreePoint.Info);
+   end PostOrderIterative;
+   
+	procedure PostOrderRecursive(TreePoint: in out BinarySearchTreePoint) is
+   begin
+      if TreePoint.LTag then
+         PostOrderRecursive(TreePoint.LLink);
+      end if;
+      if TreePoint.RTag then
+         PostOrderRecursive(TreePoint.RLink);
+      end if;
+      myPutRec(TreePoint.Info);
+   end PostOrderRecursive;
+   
+   procedure allocateNode(Q : out BinarySearchTreePoint; 
+                           name: in AKey; number : in AKey) IS
+   begin
+      Q := new Node'(null, null, false, true, makeRecord(name, number));
+      Q.LLink := Q; Q.RLink := Q.LLink;
    end;
-
 
    procedure makeTree(file : String) is
       Input_Exception : Exception;
       input : KeyIO.File_Type;
-      Root : BinarySearchTreePoint;
+      Root : BinarySearchTreePoint := new Node'(null, null, false, true, makeRecord(dummy, dummy));
       op, T1, T2 : AKey;
       tempNode, tempNode2 : BinarySearchTreePoint;
    begin
+      Root.LLink := Root; Root.RLink := Root;
       Open(input, in_file, "input.txt");
       begin
          while not End_of_file(input) loop
             Read(input, op);
             put(getVal(op)); New_Line;
             case getVal(op) is
-               when 1 =>   --1         Morah     294-1882   after devin
+               when 1 => 
                   Read(input, T1); Read(input, T2);
                   InsertBinarySearchTree(Root, T1, T2);
                when 2 =>
@@ -237,34 +298,48 @@ package body genericBST is
                when 3 =>
                   Read(input, T1);
                   put("Searching recursively for "); myputname(T1); New_Line;
-                  FindCustomerRecursive(Root, T1, tempNode);
+                  FindCustomerRecursive(Root.LLink, T1, tempNode);
                when 4 =>
                   Read(input, T1);
-                  FindCustomerRecursive(Root, T1, tempNode);
-                  put_line("Traversing inorder: ");
-                  -- myputrec(tempNode.Info);
---                   tempNode2 := tempNode.RLink;
---                   while tempNode2 /= tempNode loop
---                      myputrec(tempNode2.Info); tempNode2 := InOrderSuccessor(tempNode2, Root);
---                   end loop;
+                  FindCustomerIterative(Root, T1, tempNode);
+                  put_line("Traversing in order from ");
+                  myputrec(tempNode.Info);
+                  tempNode2 := InOrderSuccessor(tempNode);
+                  while tempNode2 /= tempNode loop
+                     if tempNode2 /= Root then  --skip Root dummy print
+                        myputrec(tempNode2.Info); 
+                     end if;
+                     tempNode2 := InOrderSuccessor(tempNode2);
+                  end loop; 
                when 5 =>
-                  -- put_line("Traversing inorder from root: ");
---                   myputrec(Root.Info);
---                   tempNode2 := Root.RLink;
---                   while tempNode2 /= Root loop
---                      myputrec(tempNode2.Info); tempNode2 := InOrderSuccessor(tempNode2, Root);
---                   end loop;
-                     null;
+                  put_line("Traversing in order from root: ");
+                  tempNode2 := Root.LLink;
+                  while tempNode2 /= Root loop
+                     myputrec(tempNode2.Info); 
+                     tempNode2 := InOrderSuccessor(tempNode2);
+                  end loop;
                when 6 =>
-                  null;
+                  put("Deleting ");
+                  Read(input, T1);
+                  myPutName(T1); New_Line;
+                  FindCustomerRecursive(Root, T1, tempNode);
+                  --delete doesn't work correctly
+--                   if tempNode /= null then
+--                      DeleteRandomNode(tempNode, Root);
+--                   end if;
                when 7 =>
-                  null;
+                  tempNode := Root.LLink;
+                  put("Traversing in reverse order from "); 
+                  myputname(getname(tempNode.Info));
+                  New_Line;
+                  ReverseInOrder(Root.LLink);
                when 8 =>
-                  null;
+                  Preorder(Root.LLink, Root);
                when 9 =>
-                  null;
+                  PostorderIterative(Root.LLink);
                when 10 =>
-                   null;
+                  put_line("Traversing in postorder, recursively: ");
+                  PostOrderRecursive(Root.LLink);
                when others =>
                   raise Input_Exception;
             end case;
