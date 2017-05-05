@@ -1,3 +1,9 @@
+--Justin Jones
+--COSC 3319.01 Spring 2017
+--Lab 5
+--
+--'A' Option
+
 with Ada.Text_IO, Ada.Integer_Text_IO; use Ada.Text_IO, Ada.Integer_Text_IO;
 with genericBST;
 
@@ -38,11 +44,6 @@ procedure main is
       return ARecord.Name;
    end getName;
    
-   function getNumber (ARecord : in Customer) return String10 is
-   begin
-      return ARecord.PhoneNumber;
-   end getNumber;
-   
    function makeRecord (P : in String10; Q : in String10) return Customer is
       rec : Customer := (P, Q);
    begin
@@ -54,9 +55,9 @@ procedure main is
       return Integer'Value(P);
    end getVal;
    
-   head : String(1..10) := "zzzzzzzzzz";
+   head : String(1..10) := "zzzzzzzzzz";  --inserts will always go to left of Head
    
-   package myBST is new genericBST(String10, Customer,"<", ">", "=", myPutRec, myPutName, getName, getNumber, makeRecord, getVal, head);
+   package myBST is new genericBST(String10, Customer,"<", ">", "=", myPutRec, myPutName, getName, makeRecord, getVal, head);
 begin
       myBST.makeTree("input.txt");
 end main;
