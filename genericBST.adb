@@ -196,6 +196,19 @@ package body genericBST is
       end loop;
    end PreOrder;
    
+   --the specification calls for iterative, last page of lab says recursive
+   --not utilized, but added to be thorough
+   procedure PreOrderRecursive (P : in out BinarySearchTreePoint) is
+   begin
+      myPutRec(P.Info);
+      if P.LTag then
+         PreOrderRecursive(P.LLink);
+      end if;
+      if P.RTag then
+         PreOrderRecursive(P.RLink);
+      end if;
+   end PreOrderRecursive;
+   
    procedure ReverseInOrder (P : in out BinarySearchTreePoint) is
       T : BinarySearchTreePoint := P;
    begin

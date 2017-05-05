@@ -38,6 +38,7 @@ package genericBST is
 				          CustomerPoint:  out BinarySearchTreePoint);
 	function InOrderSuccessor(TreePoint: in BinarySearchTreePoint) 
 		return BinarySearchTreePoint;
+   procedure PreOrderRecursive (P : in out BinarySearchTreePoint);
 	procedure PreOrder(TreePoint: in out BinarySearchTreePoint; 
                      Root : in BinarySearchTreePoint);
 	procedure PostOrderIterative(TreePoint: in out BinarySearchTreePoint);
